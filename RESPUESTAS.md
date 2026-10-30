@@ -1,6 +1,9 @@
 # Respuestas - Escalamiento en Azure
 ### Parrado - Hernandez
 
+## Video
+[![Video Lab](https://img.youtube.com/vi/aTDD47IvrdU/0.jpg)](https://youtu.be/aTDD47IvrdU)
+
 ---
 
 ## Parte 1 - Escalabilidad Vertical
