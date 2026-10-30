@@ -92,9 +92,10 @@ Sí hubo mejora. Con la VM D4s_v3 los tiempos bajaron ~25% (de ~12s a ~9s en pet
 
 No, con 4 ejecuciones paralelas el sistema se satura más. La escalabilidad vertical tiene un límite — agregar más recursos a una sola máquina no escala linealmente cuando el algoritmo es ineficiente y Node.js es single-threaded.
 
----
+## Video Parte 2
+[![Video Lab Parte 2](https://img.youtube.com/vi/ncsdc1AiZuo/0.jpg)](https://youtu.be/ncsdc1AiZuo)
 
-## Parte 2 - Escalabilidad Horizontal
+---
 
 **¿Cuáles son los tipos de balanceadores de carga en Azure?**
 
@@ -146,13 +147,18 @@ Actúa como firewall virtual que controla el tráfico de entrada y salida de los
 
 **Informe de Newman - Comparativo Parte 1 vs Parte 2**
 
-<!-- Pega aquí la captura del resultado de Newman Parte 2 -->
+![5](image-3.png)
+![4](image-4.png)
 
-| Métrica | 1 VM (Vertical) | 3 VMs (Horizontal) |
+| Métrica | 1 VM D4s_v3 (Vertical) | Load Balancer + 2 VMs (Horizontal) |
 |---|---|---|
-| Peticiones exitosas | ? | ? |
-| Tiempo promedio | ? | ? |
-| Fallos | ? | ? |
+| Peticiones exitosas (1 paralela) | 10/10 | 10/10 |
+| Tiempo promedio (1 paralela) | 9.1s | 9.1s |
+| Peticiones exitosas (2 paralelas) | 10/10 | 10/10 |
+| Tiempo promedio (2 paralelas) | ~17.8s | 9.3s |
+| Fallos | 0 | 0 |
+
+Con escalabilidad horizontal el tiempo con 2 peticiones paralelas se mantuvo en 9.3s (igual que con 1 petición), mientras que con escalabilidad vertical subió a 17.8s. Esto demuestra que el Load Balancer distribuye la carga entre las VMs eficientemente.
 
 **Diagrama de Despliegue**
 
